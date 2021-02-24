@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
  def index
-  @messages = Message.all
+  @messages = Message.order(id: :desk).page(params[:page]).per(3)
   end
 
   def show
@@ -54,4 +54,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
-
+end
